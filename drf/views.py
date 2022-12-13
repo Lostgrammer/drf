@@ -8,6 +8,15 @@ from .serializer import PaisSerializado
 
 @api_view(['GET','POST'])
 def pais(request):
-    return Response('')
+    if request.method =='POST':  #ingresar datos
+        #print(request.data) #
+        serializer = PaisSerializado(data=request.data)
+        #si se comprueba la serializacion guardamos
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+    elif(request.method=='GET'):  #pedir datos de pagina
+        pass
 
+    return Response('')
 # Create your views here.

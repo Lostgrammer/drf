@@ -5,5 +5,5 @@ from .models import Pais
 class PaisSerializado(serializers.ModelSerializer): #indicar que este serializer sea del modelo
     class Meta:
         model = Pais #de que modelo viene
-        field = ('nombre','moneda') #campos del modelo
-        read_only_fields = ('creado_en') #campo de solo lectura
+        fields = ('nombre','moneda') #campos del modelo
+        read_only_fields = ('creado_en',) #campo de solo lectura
