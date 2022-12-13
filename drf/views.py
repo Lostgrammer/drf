@@ -16,7 +16,9 @@ def pais(request):
             serializer.save()
             return Response(serializer.data,status=status.HTTP_201_CREATED)
     elif(request.method=='GET'):  #pedir datos de pagina
-        pass
+        objr = Pais.objects.all()
+        serializer = PaisSerializado(objr,many=True)
+        return Response(serializer.data)
 
     return Response('')
 # Create your views here.
